@@ -5,9 +5,10 @@ A WordPress plugin built with React with [hot module replacement](https://webpac
 ### Instructions
 
 1. Clone the repository in your `/wp-content/plugins` folder.
-1. Install the plugin from `/wp-admin/plugins/` page
 1. cd into the repo in your terminal `cd wp-react-hmr-demo`
 1. Install dependencies by running `yarn install`
+1. Build the plugin assets: `yarn build`
+1. Install the plugin from `/wp-admin/plugins/` page
 
 To start developing with [HMR](https://webpack.js.org/concepts/hot-module-replacement/) support, open your `wp-config.php` and add this constant:
 
@@ -32,4 +33,3 @@ When not running `yarn start`, you should turn the constant to `false`.
 `yarn build`: Runs the build in production mode
 
 `yarn build:dev`: Runs the build in development mode
-

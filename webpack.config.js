@@ -1,7 +1,5 @@
-const webpack = require("webpack");
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const DependencyExtractionWebpackPlugin = require("@wordpress/dependency-extraction-webpack-plugin");
 
 const config = {
   entry: {
@@ -10,6 +8,9 @@ const config = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].js",
+  },
+  externals: {
+    "@wordpress/api-fetch": ["wp", "apiFetch"],
   },
   module: {
     rules: [
@@ -79,19 +80,7 @@ const config = {
       },
     },
   },
-  plugins: [
-    new MiniCssExtractPlugin(),
-    new DependencyExtractionWebpackPlugin({
-      injectPolyfill: true,
-      requestToExternal(request) {
-        // remove WordPress externals, except...
-        // api-fetch, because it sets the API fetching defaults
-        if (request !== "@wordpress/api-fetch") {
-          return "";
-        }
-      },
-    }),
-  ],
+  plugins: [new MiniCssExtractPlugin()],
 };
 
 module.exports = (env, argv) => {

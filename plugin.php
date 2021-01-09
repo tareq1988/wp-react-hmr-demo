@@ -17,6 +17,7 @@ add_action('admin_menu', function () {
         'manage_options',
         'react-hmr',
         'react_hmr_render',
+        'dashicons-admin-site-alt3'
     );
 
     add_action('admin_print_scripts-' . $menu, 'react_hmr_scripts');
@@ -29,7 +30,11 @@ function react_hmr_render()
 
 function react_hmr_scripts()
 {
-    $assets = require __DIR__ . '/dist/runtime.asset.php';
+    $version = date('y-m-d');
+    $dependencies = [
+        // 'wp-polyfill',
+        'wp-api-fetch',
+    ];
 
     $url = plugins_url('/dist', __FILE__);
 
@@ -41,12 +46,12 @@ function react_hmr_scripts()
     }
 
     // register scripts
-    wp_register_script('app-runtime', $url . '/runtime.js', $assets['dependencies'], $assets['version'], true);
-    wp_register_script('app-vendors', $url . '/vendors.js', ['app-runtime'], $assets['version'], true);
-    wp_register_script('app-script', $url . '/app.js', [ 'app-vendors' ], $assets['version'], true);
+    wp_register_script('app-runtime', $url . '/runtime.js', $dependencies, $version, true);
+    wp_register_script('app-vendors', $url . '/vendors.js', ['app-runtime'], $version, true);
+    wp_register_script('app-script', $url . '/app.js', [ 'app-vendors' ], $version, true);
 
     // register styles
-    wp_register_style('app-css', $url . '/app.css', [ 'wp-components' ], $assets['version']);
+    wp_register_style('app-css', $url . '/app.css', [ 'wp-components' ], $version);
 
     // enqueue scripts and styles
     wp_enqueue_script('app-script');

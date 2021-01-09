@@ -1,24 +1,20 @@
 import React from "react";
 import { hot } from "react-hot-loader/root";
 import { Button } from "@wordpress/components";
-import apiFetch from "@wordpress/api-fetch";
 import Posts from "./components/Posts";
 
-class App extends React.Component {
-  render() {
-    const { name } = this.props;
-    return (
-      <>
-        <h1>Hello {name}!</h1>
+function App({ name }) {
+  return (
+    <>
+      <h1>Hello {name}!</h1>
 
-        <Button type="submit" isPrimary={true}>
-          This is WordPress Button
-        </Button>
+      <Button type="submit" isPrimary={true}>
+        This is a Button Component
+      </Button>
 
-        <Posts />
-      </>
-    );
-  }
+      <Posts />
+    </>
+  );
 }
 
 export default hot(App);

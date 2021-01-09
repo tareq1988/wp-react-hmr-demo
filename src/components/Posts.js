@@ -12,17 +12,21 @@ function Posts() {
 
     apiFetch({
       path: "/wp/v2/posts",
-    }).then((resp) => {
-      console.log(resp);
-      setIsFetching(false);
-      setPosts(resp);
-    });
+    })
+      .then((resp) => {
+        setIsFetching(false);
+        setPosts(resp);
+      })
+      .catch((err) => {
+        setIsFetching(false);
+        console.log(err);
+      });
   }, []);
 
   if (isFetching) {
     return (
       <div>
-        <Spinner /> Loading posts...
+        <Spinner /> {__("Loading posts...")}
       </div>
     );
   }
@@ -36,7 +40,7 @@ function Posts() {
           <li key={post.id}>
             {post.title.rendered} -{" "}
             <a href={post.link} target="_blank">
-              View Post
+              {__("View Post")}
             </a>
           </li>
         ))}
