@@ -1,4 +1,4 @@
-# React - HMR
+# React HMR WordPress Plugin
 
 A WordPress plugin built with React with [hot module replacement](https://webpack.js.org/concepts/hot-module-replacement/) support.
 
