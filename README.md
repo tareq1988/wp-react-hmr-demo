@@ -28,6 +28,8 @@ When not running `yarn start`, you should turn the constant to `false`.
 ### Commands
 
 `yarn start`: Starts in development mode with HMR support
+
 `yarn build`: Runs the build in production mode
+
 `yarn build:dev`: Runs the build in development mode
 
