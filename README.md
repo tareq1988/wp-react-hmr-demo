@@ -19,6 +19,12 @@ Now run: `yarn start`
 
 If you navigate to the plugin's menu and start changing your React code, you should see the code updates in realtime. Enjoy!
 
+##### What is this `WP_LOCAL_DEV` constant?
+
+When you start the webpack-dev-server with `yarn start` command, it opens a server in `http://localhost:8080` and listens to the changes. The `WP_LOCAL_DEV` constant helps to detect if we are in the development environment. If configured, the plugin CSS and JS files are served from `http://localhost:8080/` instead of your WordPress installation.
+
+When not running `yarn start`, you should turn the constant to `false`.
+
 ### Commands
 
 `yarn start`: Starts in development mode with HMR support
